@@ -165,7 +165,13 @@ body {
     width: 680px;
     height: 680px;
     background: #BDAE9B;
-    border-radius: 34px 34px 34px 34px;
+    border-radius: 34px;
+    box-sizing: border-box;
+    padding: 20px;                
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
 }
 .state {
     width: 690px;
@@ -173,141 +179,70 @@ body {
     background: #FBF7F1;
     border-radius: 30px 30px 30px 30px;
 }
-.level1{
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
+/* 格子公共基础样式 */
+.cell {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-.block2 {
-     width: 145px;
-    height: 145px;
+    justify-content: center;
+    border-radius: 15px;
     font-family: Silom;
     font-size: 67px;
-    line-height: 125px;
-    border-radius: 15px;
+    line-height: 1;
+    color: #77614D;
+    background: #E9E0D3;   /* 空格底色 */
+    user-select: none;
+    transition: background .12s ease;
+}
+
+.cell.block8, .cell.block16, .cell.block32,
+.cell.block64, .cell.block128, .cell.block256 { color: #FFFAF0; }
+.block2 {
     background: #EEE6DC;
 }
 .block4 {
-     width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 67px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #EADFC7;
 }
 .block8 {
-     width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 67px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F4B374;
 }
 .block16 {
-     width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 57px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F68B5C;
 }
-.level2{
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .block32 {
-    width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 57px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F5755B;
 }
 .block64 {
-    width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 57px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F85236;
 }
 .block128 {
-    width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 42px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F1D572;
 }
 .block256 {
-    width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 42px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F0CF5F;
 }
-.level3{
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .block512 {
-     width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 42px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #EDC94B;
 }
 .block1024 {
-     width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 30px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #EFC935;
 }
-.level4{
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 .block2048 {
-     width: 145px;
-    height: 145px;
-    font-family: Silom;
-    font-size: 30px;
-    line-height: 125px;
-    border-radius: 15px;
     background: #F3CA23;
 }
+.cell.block16, .cell.block32, .cell.block64   { font-size: 57px; }
+.cell.block128, .cell.block256, .cell.block512 { font-size: 42px; }
+.cell.block1024, .cell.block2048               { font-size: 30px; }
+
+/* 合并的小动画  */
+@keyframes pop {
+    0%   { transform: scale(.85); }
+    100% { transform: scale(1); }
+}
+.cell.pop { animation: pop .12s ease; }
+
+/* 按钮手感 */
+.start, .restart { cursor: pointer; }
+
 .ltitle {
     margin-top: 42px;
     margin-left: 44px;
@@ -417,7 +352,7 @@ text-align: center;
 }
 
 
-
+/* 移动端适配 */
 @media (max-width: 900px) {
     .banner {
         width: 100%;       
@@ -514,42 +449,18 @@ text-align: center;
 
 
     .realboard {
-        width: 100%;           
-        height: auto;          
-        aspect-ratio: 1 / 1;   
-        padding: 10px;         
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; 
-        border-radius: 20px;   
-        box-sizing: border-box;
-    }
-
-    .level1, .level2, .level3, .level4 {
-        display: flex;
-        justify-content: space-between; 
-        width: 100%;
-        margin: 0;             
-        height: 23%;           
-        gap: 8px;              
-    }
-
-    .block2, .block4, .block8, .block16, 
-    .block32, .block64, .block128, .block256, 
-    .block512, .block1024, .block2048 {
-        width: 100%;           
-        height: 100%;          
-        line-height: normal;   
-        display: flex;         
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;   
-        font-size: 6vw;        
-    }
-
-    .block128, .block256, .block512 { font-size: 4.5vw; }
-    .block1024, .block2048 { font-size: 3.5vw; }
-
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    padding: 10px;
+    gap: 8px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+.cell { font-size: 6vw; border-radius: 10px; }
+.cell.block16, .cell.block32, .cell.block64     { font-size: 6vw; }
+.cell.block128, .cell.block256, .cell.block512  { font-size: 4.5vw; }
+.cell.block1024, .cell.block2048                { font-size: 3.5vw; }
     
     .state {
         width: 100%;           
