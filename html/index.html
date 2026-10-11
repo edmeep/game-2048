@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./CSS/index.css">
 </head>
 <body>
+    
     <div class="container">
            <div class="banner">
              <div class="brown"></div>
@@ -32,32 +33,7 @@
     <span class="subtitle">JOIN THE TILES AND REACH 2048</span>
 </div>
                     <div class="banner1">
-                        <div class="realboard">
-                            <div class="level1">
-                                <div class="block2">2</div>
-                                <div class="block4">4</div>
-                                <div class="block8">8</div>
-                                <div class="block16">16</div>
-                            </div>
-                            <div class="level2">
-                                <div class="block32">32</div>
-                                <div class="block64">64</div>
-                                <div class="block128">128</div>
-                                <div class="block256">256</div>
-                            </div>
-                            <div class="level3">
-                                <div class="block512">512</div>
-                                <div class="block1024">1024</div>
-                                <div class="block2">2</div>
-                                <div class="block4">4</div>
-                            </div>
-                            <div class="level4">
-                                <div class="block8">8</div>
-                                <div class="block16">16</div>
-                                <div class="block32">32</div>
-                                <div class="block2048">2048</div>
-                            </div>
-                        </div>
+                        <div class="realboard" id="realboard"></div>
                         <div class="state">
                             <div class="ltitle">PLAY STATE</div>
                             <div class="guide">
@@ -76,8 +52,8 @@
                             </div>
                             </div>
                             <div class="game">
-                                <div class="start">NEW GAME</div>
-                                <div class="restart">RESTART</div>
+                                <div class="start" id="btnNew">NEW GAME</div>
+                                <div class="restart" id="btnRestart">RESTART</div>
                             </div>
                             </div>
                         </div>
@@ -87,5 +63,6 @@
         </div>
     
     </div>
+    <script src="./game.js"></script>
 </body>
 </html>
