@@ -7,20 +7,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0;            
+    width: 100vw;         
+    height: 100vh;        
+    overflow: hidden;     
 }
 .banner {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #F5F1EA;
-    width: 1920px;
-    height: 1080px;
+    width: 100%;
+    height: 100%;
     position: relative;
     overflow: hidden;
 }
 .container {
     width: 100%;
-    max-width: 1920px;
+    /*max-width: 1920px;*/
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,8 +46,9 @@ body {
     background: #e6f0e4;
     border-radius: 260px;
     position: absolute;
-    top: 825px;
+    bottom: -50px;
     left: -50px;
+    top: auto;
     z-index: 0;
 }
 .blue {
@@ -52,7 +58,8 @@ body {
     border-radius: 325px;
     position: absolute;
     top: -100px;
-    left: 1600px;
+    right: -100px;
+    left: auto;
     z-index: 0;
 }
 .red {
@@ -61,8 +68,10 @@ body {
     background: #F7E3DF;
     border-radius: 320px;
     position: absolute;
-    top: 850px;
-    left: 1570px;
+    bottom: -50px;
+    right: -50px;
+    top: auto;
+    left: auto;
     z-index: 0;
 }
 .board {
@@ -107,6 +116,7 @@ body {
     line-height: 36px;
     text-align: left;
     margin-top: 10px;    /* 和上面第一行留点间距 */
+    margin-bottom: 10px;
 }
 .score {
     width: 220px;
@@ -117,6 +127,7 @@ body {
 .num {
     width: 115px;
     height: 49px;
+    margin-left: 10px;
     font-family: Silom;
     font-size: 43px;
     color: #6D5746;
@@ -125,6 +136,7 @@ body {
 }
 .fen {
     margin-top: 14px;
+    margin-left: 10px;
     font-family: Silom;
     font-size: 28px;
     color: #9D9286;
@@ -139,6 +151,7 @@ body {
 }
 .shang {
     margin-top: 14px;
+    margin-left: 10px;
     font-family: Silom;
     font-size: 28px;
     color: #9D9286;
@@ -284,6 +297,7 @@ border-radius: 24px 24px 24px 24px;
 .best .max {
     margin-top: 14px;
     font-family: Silom;
+    margin-left: 10px;
 font-size: 28px;
 color: #9D9286;
 line-height: 31px;
@@ -299,6 +313,7 @@ text-align: left;
 .moves .move {
     margin-top: 14px;
     font-family: Silom;
+    margin-left: 10px;
 font-size: 28px;
 color: #9D9286;
 line-height: 31px;
@@ -341,7 +356,7 @@ line-height: 84px;
 text-align: center;
 }
 .tips{
-    margin-top: 8px;
+    margin-top: 14px;
     margin-left: 165px;
     width: 100%;
     font-family: Silom;
